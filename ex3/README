@@ -1,0 +1,29 @@
+orib
+
+
+-------------------- Answers to the questions --------------------
+
+1. The disadvantage of defining _MyString with it's members inside the
+ MyString.h file is that in a case where couple of files use: 
+#include "MyString.h" we will encounter a problem because then we will
+have more than one implementation of _MyString struct and this is illegal
+in C, only one implementation of a module is allowed. 
+On the other hand if we only declare _MyString without it's implementation,
+other files which will include MyString.h will receive the declaration and 
+then will be able to implement it each in it's own way.
+
+2. When compiling a file which uses MyString.h the compilation will succeed 
+because the compiler will notify of the structure and recognize it but it 
+will not have any data regarding it's members and thus will not be able to
+compile data regarding the members or size of the struct.
+This method is called an incomplete declaration or forward declaration
+and it is used to announce the existence of the struct. It is possible because
+the  compiler will first be aware of the struct and later on, in the linkage 
+process, it will link the declaration to the implementation of the struct
+ in the .c file and only then it will have access to the members.
+This method reduces coupling or dependencies between modules which 
+result in faster compilation, since the compiler is aware of the  
+struct at an early stage of the compilation process, which at this early
+ stage the size and struct of _MyString are irrelevant.
+As long as we don't use the members of the struct, the compilation will
+succeed because the compiler identifies the struct as a module.

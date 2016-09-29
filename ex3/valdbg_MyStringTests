@@ -1,0 +1,196 @@
+==1581== Memcheck, a memory error detector
+==1581== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==1581== Using Valgrind-3.10.0 and LibVEX; rerun with -h for copyright info
+==1581== Command: MyString
+==1581== 
+==1581== Invalid write of size 1
+==1581==    at 0x4EA15A9: vsprintf (iovsprintf.c:43)
+==1581==    by 0x4E859F6: sprintf (sprintf.c:32)
+==1581==    by 0x400D66: myStringSetFromInt (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x4025DE: myStringSetFromIntNormal (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x40322E: main (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==  Address 0x51de9f9 is 0 bytes after a block of size 9 alloc'd
+==1581==    at 0x4C2AF2E: realloc (vg_replace_malloc.c:692)
+==1581==    by 0x40141C: adjustMyStringLength (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x400D3A: myStringSetFromInt (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x4025DE: myStringSetFromIntNormal (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x40322E: main (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581== 
+==1581== Invalid write of size 1
+==1581==    at 0x4EA15A9: vsprintf (iovsprintf.c:43)
+==1581==    by 0x4E859F6: sprintf (sprintf.c:32)
+==1581==    by 0x400D66: myStringSetFromInt (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x402651: myStringSetFromIntNormal (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x40322E: main (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==  Address 0x51dea9a is 0 bytes after a block of size 10 alloc'd
+==1581==    at 0x4C2AF2E: realloc (vg_replace_malloc.c:692)
+==1581==    by 0x40141C: adjustMyStringLength (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x400D3A: myStringSetFromInt (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x402651: myStringSetFromIntNormal (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x40322E: main (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581== 
+==1581== Invalid read of size 1
+==1581==    at 0x4C2FAC4: rawmemchr (vg_replace_strmem.c:1240)
+==1581==    by 0x4EACA31: _IO_str_init_static_internal (strops.c:44)
+==1581==    by 0x4E9D1A6: __isoc99_vsscanf (isoc99_vsscanf.c:41)
+==1581==    by 0x4E9D146: __isoc99_sscanf (isoc99_sscanf.c:31)
+==1581==    by 0x400DC2: myStringToInt (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x402730: myStringToIntNormal (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x403242: main (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==  Address 0x51debd6 is 0 bytes after a block of size 6 alloc'd
+==1581==    at 0x4C2AF2E: realloc (vg_replace_malloc.c:692)
+==1581==    by 0x40141C: adjustMyStringLength (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x400CBA: myStringSetFromCString (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x402724: myStringToIntNormal (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x403242: main (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581== 
+==1581== Invalid read of size 1
+==1581==    at 0x4013E6: getCStringLength (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x401568: getFilteredStringLength (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x400BA4: myStringFilter (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x402444: myStringFilterNormal (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x403256: main (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==  Address 0x51ded14 is 0 bytes after a block of size 4 alloc'd
+==1581==    at 0x4C2AF2E: realloc (vg_replace_malloc.c:692)
+==1581==    by 0x40141C: adjustMyStringLength (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x400CBA: myStringSetFromCString (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x402433: myStringFilterNormal (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x403256: main (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581== 
+==1581== Invalid read of size 1
+==1581==    at 0x4013E6: getCStringLength (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x4014F5: createFilteredString (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x400BFE: myStringFilter (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x402444: myStringFilterNormal (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x403256: main (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==  Address 0x51ded14 is 0 bytes after a block of size 4 alloc'd
+==1581==    at 0x4C2AF2E: realloc (vg_replace_malloc.c:692)
+==1581==    by 0x40141C: adjustMyStringLength (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x400CBA: myStringSetFromCString (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x402433: myStringFilterNormal (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x403256: main (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581== 
+==1581== Invalid read of size 2
+==1581==    at 0x4C2D988: memcpy@@GLIBC_2.14 (vg_replace_strmem.c:915)
+==1581==    by 0x400E51: myStringToCString (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x402450: myStringFilterNormal (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x403256: main (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==  Address 0x51dee00 is 0 bytes inside a block of size 2 free'd
+==1581==    at 0x4C29E90: free (vg_replace_malloc.c:473)
+==1581==    by 0x400A2B: myStringFree (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x400C28: myStringFilter (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x402444: myStringFilterNormal (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x403256: main (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581== 
+==1581== Invalid free() / delete / delete[] / realloc()
+==1581==    at 0x4C29E90: free (vg_replace_malloc.c:473)
+==1581==    by 0x400A2B: myStringFree (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x4024D0: myStringFilterNormal (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x403256: main (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==  Address 0x51dee00 is 0 bytes inside a block of size 2 free'd
+==1581==    at 0x4C29E90: free (vg_replace_malloc.c:473)
+==1581==    by 0x400A2B: myStringFree (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x400C28: myStringFilter (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x402444: myStringFilterNormal (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x403256: main (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581== 
+Testing myStringAlloc:
+PASS
+Testing myStringFree:
+Running myStringFreeNormalFree
+PASS
+Running myStringFreeNullFree
+PASS
+Testing myStringSetFromCString:
+Running myStringSetFromCStringNormal
+PASS
+Testing myStringClone:
+Running myStringCloneNormal
+PASS
+Testing myStringSetFromMyString:
+Running myStringSetFromMyStringEmpty
+PASS
+Running myStringSetFromMyStringNormal
+PASS
+Testing myStringSetFromIntNormal:
+Running myStringSetFromIntNormal
+PASS
+Testing myStringToIntNormal:
+Running myStringToIntNormal
+1
+1
+PASS
+Testing myStringFilter:
+Running myStringFilterNormal
+PASS
+Testing myStringCat:
+Running myStringCatNormal
+PASS
+Testing myStringCatTo:
+Running myStringCatToNormal
+PASS
+Testing myStringToCString:
+Running myStringToCStringNormal
+PASS
+Testing myStringCompare:
+Running myStringCompare
+PASS
+Testing myStringCustomCompare:
+Running myStringCustomCompareNormal
+PASS
+Testing myStringEqual:
+Running myStringEqualNormal
+PASS
+Testing myStringCustomEqual:
+Running myStringCustomEqualNormal
+PASS
+Testing myStringMemUsage:
+Running myStringMemUsageNormal
+PASS
+Testing myStringLen:
+Running myStringLenNormal
+PASS
+Testing myStringWrite:
+Running myStringWriteNormal
+PASS
+Testing myStringCompare:
+Running myStringCompareNullCheck
+PASS
+Running myStringCompareEmptyCheck
+PASS
+Running myStringCompareNormalCheck
+PASS
+Testing myStringSort:
+Running myStringSortThreeSort
+PASS
+Testing myStringCustomSort:
+Running myStringCustomSortThreeSort
+PASS
+==1581== 
+==1581== HEAP SUMMARY:
+==1581==     in use at exit: 5 bytes in 2 blocks
+==1581==   total heap usage: 150 allocs, 149 frees, 1,832 bytes allocated
+==1581== 
+==1581== 1 bytes in 1 blocks are definitely lost in loss record 1 of 2
+==1581==    at 0x4C28C20: malloc (vg_replace_malloc.c:296)
+==1581==    by 0x4015C4: emptyStringAlloc (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x4009F5: myStringAlloc (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x402350: myStringSetFromMyStringNormal (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x40321A: main (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581== 
+==1581== 4 bytes in 1 blocks are definitely lost in loss record 2 of 2
+==1581==    at 0x4C2AF2E: realloc (vg_replace_malloc.c:692)
+==1581==    by 0x40141C: adjustMyStringLength (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x400CBA: myStringSetFromCString (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x402433: myStringFilterNormal (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581==    by 0x403256: main (in /a/fr-05/vol/prime/stud/orib/workspaceC/ex3/MyString)
+==1581== 
+==1581== LEAK SUMMARY:
+==1581==    definitely lost: 5 bytes in 2 blocks
+==1581==    indirectly lost: 0 bytes in 0 blocks
+==1581==      possibly lost: 0 bytes in 0 blocks
+==1581==    still reachable: 0 bytes in 0 blocks
+==1581==         suppressed: 0 bytes in 0 blocks
+==1581== 
+==1581== For counts of detected and suppressed errors, rerun with: -v
+==1581== ERROR SUMMARY: 10 errors from 9 contexts (suppressed: 0 from 0)

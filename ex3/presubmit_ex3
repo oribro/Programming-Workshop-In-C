@@ -1,0 +1,71 @@
+#! /usr/bin/python
+import os
+import sys
+sys.path.insert(0, '/cs/course/2015/slabc/www/')
+import psUtils
+import shutil
+from subprocess import call
+
+print "start presubmit_ex3"
+
+
+
+#Set autoflash
+sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
+
+courseBaseDir = "/cs/course/2015/slabc"
+codingStyleDir = courseBaseDir + "/www/nsiqcppstyle"
+
+# Exercise name
+exName = "ex3"
+
+#Here we define good and bad files.
+required = ["valdbg_MyStringMain", "valdbg_MyStringTests","Makefile", "MyString.h", "MyString.c", "MyStringMain.c","README"]
+forbidden =[]
+goodPatterns = ["valdbg_MyStringMain", "valdbg_MyStringTests","Makefile", "MyString.h", "MyString.c", "MyStringMain.c","extension.pdf","extention.pdf", "README"]
+
+badPatterns = ["*.class",\
+               "*.o"]
+
+
+#number of seconds afterwhich the execution process will be terminated.
+secsToRun = 20
+
+# check that a file was supplied.
+if len(sys.argv)<2:
+    #print error
+    sys.exit(1);
+
+print "Running..."
+    
+tarFile = os.path.abspath(sys.argv[1])
+
+tempDir = psUtils.createTempDir("slabc_Temp_"+exName+"_")
+os.chdir(tempDir)
+
+# Open tar file
+if psUtils.extractTar(tarFile):
+    print "Tar extraction failed."
+    sys.exit(1);
+    
+print "Tar extracted O.K."
+   
+#make sure the files are as they should be.
+if psUtils.checkFiles(tempDir, required, forbidden, goodPatterns, badPatterns):
+    sys.exit(1)
+
+# Make sure there are no empty files submitted
+# (we do this since these can be compiled without error)
+if psUtils.emptyFiles(tempDir):
+    sys.exit(1)
+    
+
+
+#check  makfiles
+#check test 
+#psUtils.safeRunCMD("make tests > testsOutput",secsToRun)
+#if psUtils.safeRunCMD("`ls -l testsOutput | awk '{print $5}'`",secsToRun) != 0:
+#	print "make tests output is empty"
+
+
+sys.exit(0)

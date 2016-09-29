@@ -1,0 +1,86 @@
+#! /usr/bin/python
+import os
+import sys
+sys.path.insert(0, '/cs/course/2015/slabc/www/')
+import psUtils
+import shutil
+from subprocess import call
+
+print "start presubmit_ex2"
+
+
+
+#Set autoflash
+sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
+
+courseBaseDir = "/cs/course/2015/slabc"
+codingStyleDir = courseBaseDir + "/www/nsiqcppstyle"
+
+# Exercise name
+exName = "ex2"
+
+#Here we define good and bad files.
+required = ["MyString.c", "LineSeparator.c", "LineSeparator.h"]
+forbidden =[]
+goodPatterns = ["MyString.c","LineSeparator.c", "LineSeparator.h","extension.pdf","extention.pdf"]
+
+badPatterns = ["README",
+               "*.class",\
+               "*.o"]
+
+
+#number of seconds afterwhich the execution process will be terminated.
+secsToRun = 20
+
+# check that a file was supplied.
+if len(sys.argv)<2:
+    #print error
+    sys.exit(1);
+
+print "Running..."
+    
+tarFile = os.path.abspath(sys.argv[1])
+
+tempDir = psUtils.createTempDir("slabc_Temp_"+exName+"_")
+os.chdir(tempDir)
+
+# Open tar file
+if psUtils.extractTar(tarFile):
+    print "Tar extraction failed."
+    sys.exit(1);
+    
+print "Tar extracted O.K."
+   
+#make sure the files are as they should be.
+if psUtils.checkFiles(tempDir, required, forbidden, goodPatterns, badPatterns):
+    sys.exit(1)
+
+# Make sure there are no empty files submitted
+# (we do this since these can be compiled without error)
+if psUtils.emptyFiles(tempDir):
+    sys.exit(1)
+    
+shutil.copyfile('/cs/course/2015/slabc/www/ex2/tester.c', 'tester.c')
+shutil.copyfile('/cs/course/2015/slabc/www/ex2/MyString.h', 'MyString.h')
+
+#check compilation
+#MyString.c:
+compileCmd1 = "c99 -Wextra -DNDEBUG -Werror -c tester.c MyString.c"
+compileCmd2 = "strip --strip-symbol main MyString.o"
+compileCmd3 = "c99  -DNDEBUG -Wextra -Werror tester.o MyString.o"
+compileResult = psUtils.compile(compileCmd1)
+if compileResult:
+    sys.exit(compileResult >> 8)
+compileResult = psUtils.compile(compileCmd2)
+if compileResult:
+    sys.exit(compileResult >> 8)
+compileResult = psUtils.compile(compileCmd3)
+if compileResult:
+    sys.exit(compileResult >> 8)
+
+compileCmd4 = "c99 -Wextra -DNDEBUG -Werror -c LineSeparator.c"
+compileResult = psUtils.compile(compileCmd4)
+if compileResult:
+    sys.exit(compileResult >> 8)
+
+sys.exit(0)

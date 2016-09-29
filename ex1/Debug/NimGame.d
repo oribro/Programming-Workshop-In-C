@@ -1,0 +1,1 @@
+NimGame.d: ../NimGame.c
